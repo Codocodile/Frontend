@@ -1,5 +1,5 @@
 import "./App.css";
-import { Header, Section } from "./containers";
+import { Footer, Header, Section } from "./containers";
 import { Navbar, EventTimeline, StaffCarousel, FAQ } from "./components";
 
 var timeline = [
@@ -67,6 +67,7 @@ function App() {
       <Section name="FAQ" capitalize={true}>
         <FAQ data={faq}/>
       </Section>
+      <Footer />
     </div>
   );
 }
