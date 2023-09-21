@@ -7,9 +7,12 @@ import {
   IconButton,
   Avatar,
 } from "@material-tailwind/react";
+import {urls} from "../../global/Variables.ts";
+import {useNavigate} from "react-router-dom";
 
 const Navbar = () => {
   const [openNav, setOpenNav] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.addEventListener(
@@ -86,6 +89,7 @@ const Navbar = () => {
             variant="outlined"
             size="sm"
             className="hidden lg:inline-block"
+            onClick={() => navigate(urls.signIn)}
           >
             <span>Sign In</span>
           </Button>
