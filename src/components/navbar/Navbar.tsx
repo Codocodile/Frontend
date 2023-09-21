@@ -97,6 +97,7 @@ const Navbar = () => {
             variant="gradient"
             size="sm"
             className="hidden lg:inline-block"
+            onClick={() => navigate(urls.signUp)}
           >
             <span>Sign Up</span>
           </Button>
