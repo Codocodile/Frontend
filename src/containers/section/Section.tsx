@@ -24,7 +24,7 @@ const Section = (props: Props) => {
   return (
     <div id={slugify(props.name)} className="bg-gray-900 pt-8">
       <div className="container w-[48rem] mx-auto text-center">
-        <Typography variant="h1" color="white" className="text-white">
+        <Typography variant="h1" color="white" className="text-white mb-6 mt-6">
           {props.capitalize ? props.name.toUpperCase() : titleCase(props.name)}
         </Typography>
         {props.children}
