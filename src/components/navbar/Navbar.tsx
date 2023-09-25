@@ -5,7 +5,7 @@ import {
   Typography,
   Button,
   IconButton,
-  Avatar,
+  // Avatar,
 } from "@material-tailwind/react";
 import {urls} from "../../global/Variables.ts";
 import {useNavigate} from "react-router-dom";
@@ -69,18 +69,18 @@ const Navbar = () => {
   return (
     <NavbarComponent
       variant="gradient"
-      color="green"
+      color="transparent"
       className="sticky top-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 from-green-100 to-green-300"
     >
       <div className="flex items-center justify-between text-blue-gray-900">
         <div className="flex items-center gap-4">
-          <Avatar src="assets/logo.png" size="lg" />
+          {/*<Avatar src="assets/Header_logo.png" size="lg" />*/}
           <Typography
             as="a"
             href="#"
             className="mr-4 cursor-pointer py-1.5 font-large font-bold"
           >
-            Codocodile
+            <img src="assets/Header_logo.png" alt="header_logo" width={100} height={100} />
           </Typography>
         </div>
         <div className="flex items-center gap-4">
