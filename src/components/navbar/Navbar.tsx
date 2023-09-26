@@ -26,7 +26,7 @@ const Navbar = () => {
       <Typography
         as="li"
         variant="small"
-        color="blue-gray"
+        color="slate"
         className="p-1 font-normal"
       >
         <a href="#timeline" className="flex items-center">
@@ -36,7 +36,7 @@ const Navbar = () => {
       <Typography
         as="li"
         variant="small"
-        color="blue-gray"
+        color="slate"
         className="p-1 font-normal"
       >
         <a href="#staff" className="flex items-center">
@@ -46,7 +46,7 @@ const Navbar = () => {
       <Typography
         as="li"
         variant="small"
-        color="blue-gray"
+        color="slate"
         className="p-1 font-normal"
       >
         <a href="#" className="flex items-center">
@@ -56,7 +56,7 @@ const Navbar = () => {
       <Typography
         as="li"
         variant="small"
-        color="blue-gray"
+        color="slate"
         className="p-1 font-normal"
       >
         <a href="#" className="flex items-center">
@@ -72,7 +72,7 @@ const Navbar = () => {
       color="transparent"
       className="sticky top-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 from-green-100 to-green-300"
     >
-      <div className="flex items-center justify-between text-blue-gray-900">
+      <div className="flex items-center justify-between text-slate-900">
         <div className="flex items-center gap-4">
           {/*<Avatar src="assets/Header_logo.png" size="lg" />*/}
           <Typography

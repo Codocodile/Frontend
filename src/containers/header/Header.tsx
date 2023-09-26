@@ -6,7 +6,7 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between flex-col-reverse lg:flex-row md:mb-8">
         <div className="flex items-center gap-4">
           <Typography variant="h1" color="gray" className="p-1 font-normal">
-            Fight Shahali for the Crocodiles
+            Fight with your codes!
           </Typography>
         </div>
         <div className="flex items-center gap-4">

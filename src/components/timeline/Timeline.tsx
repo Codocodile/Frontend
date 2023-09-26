@@ -32,7 +32,7 @@ const EventTimeline = ({ events }: Props) => {
               <TimelineIcon />
               <Typography
                 variant="h6"
-                color="blue-gray"
+                color="slate"
                 className="leading-none text-white"
               >
                 {event.title}

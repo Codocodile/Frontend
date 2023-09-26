@@ -12,7 +12,7 @@ interface Props {
 
 const StaffCarousel = ({ staff }: Props) => {
   return (
-    <Carousel transition={{ duration: 2 }} className="rounded-xl">
+    <Carousel transition={{ duration: 0.5 }} className="rounded-xl">
       {staff.map((member) => (
         <div className="flex flex-col items-center justify-center h-96 bg-gray-100">
           <img src={member.image} alt="" className="w-48 h-48 rounded-full" />

@@ -24,17 +24,17 @@ const staff = [
   {
     name: "Ali Salesi",
     title: "Head of Technical",
-    image: "https://via.placeholder.com/150",
+    image: "assets/staff/salesi.jpg",
   },
   {
     name: "Ali Shahali",
     title: "Head of Event",
-    image: "https://via.placeholder.com/150",
+    image: "assets/staff/shahali.jpg",
   },
   {
     name: "Emad Emam Jome",
     title: "Head of Social",
-    image: "https://via.placeholder.com/150",
+    image: "assets/staff/emamjome.jpg",
   },
 ];
 
