@@ -1,0 +1,11 @@
+.header-wrapper {
+    background-image: url(assets/BackgroundImage.png);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 8rem;
+}
+
+.header-type-writer {
+    font-family: IBM Plex Mono, monospace !important;
+}

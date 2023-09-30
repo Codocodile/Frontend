@@ -49,6 +49,7 @@ const FAQ = ({ data }: Props) => {
     <>
       {data.map((qa, index) => (
         <Accordion
+          key={index}
           open={open === index + 1}
           icon={<Icon id={index + 1} open={open} />}
         >

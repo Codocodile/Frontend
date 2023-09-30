@@ -26,13 +26,14 @@ const EventTimeline = ({ events }: Props) => {
     >
       <Timeline>
         {events.map((event, index) => (
-          <TimelineItem>
+          <TimelineItem
+            key={index}>
             {index != events.length - 1 && <TimelineConnector />}
             <TimelineHeader className="h-3">
               <TimelineIcon />
               <Typography
                 variant="h6"
-                color="slate"
+                color="blue-gray"
                 className="leading-none text-white"
               >
                 {event.title}
