@@ -1,6 +1,6 @@
 import { Typography } from "@material-tailwind/react";
 import Typewriter from "typewriter-effect";
-import "./Header.css";
+import "./header.css";
 
 const Header = () => {
   return (
