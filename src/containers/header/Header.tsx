@@ -1,4 +1,5 @@
 import { Typography } from "@material-tailwind/react";
+import Typewriter from 'typewriter-effect';
 
 const Header = () => {
   return (
@@ -6,7 +7,18 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between flex-col-reverse lg:flex-row md:mb-8">
         <div className="flex items-center gap-4">
           <Typography variant="h1" color="gray" className="p-1 font-normal">
-            Fight with your codes!
+            <Typewriter
+              options={{
+                strings: [
+                  "Learn Algorithmic Vision",
+                  "Challenge Your Programming Skills",
+                  "Compete With The Best",
+                  "Win Exciting Prizes"
+                ],
+                autoStart: true,
+                loop: true,
+              }}
+            />
           </Typography>
         </div>
         <div className="flex items-center gap-4">

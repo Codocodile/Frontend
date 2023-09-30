@@ -60,9 +60,9 @@ function Landing() {
       <Section name="timeline">
         <EventTimeline events={timeline}/>
       </Section>
-      <Section name="staff">
+      {/* <Section name="staff">
         <StaffCarousel staff={staff}/>
-      </Section>
+      </Section> */}
       <Section name="FAQ" capitalize={true}>
         <FAQ data={faq}/>
       </Section>
