@@ -27,7 +27,7 @@ const Header = () => {
           </Typography>
         </div>
         <div className="flex items-center gap-4">
-          <img src="assets/main-croc.jpg" alt="logo" className="max-w-lg" />
+          <img src="assets/main-croc.png" alt="logo" className="max-w-lg" />
         </div>
       </div>
       <div className="flex items-center gap-4">
