@@ -1,5 +1,5 @@
 import { Footer, Header, Section } from "../../containers";
-import { Navbar, EventTimeline, StaffCarousel, FAQ } from "../";
+import { Navbar, EventTimeline, FAQ } from "../";
 
 const timeline = [
   {
@@ -20,23 +20,23 @@ const timeline = [
   },
 ]
 
-const staff = [
-  {
-    name: "Ali Salesi",
-    title: "Head of Technical",
-    image: "assets/staff/salesi.jpg",
-  },
-  {
-    name: "Ali Shahali",
-    title: "Head of Event",
-    image: "assets/staff/shahali.jpg",
-  },
-  {
-    name: "Emad Emam Jome",
-    title: "Head of Social",
-    image: "assets/staff/emamjome.jpg",
-  },
-];
+// const staff = [
+//   {
+//     name: "Ali Salesi",
+//     title: "Head of Technical",
+//     image: "assets/staff/salesi.jpg",
+//   },
+//   {
+//     name: "Ali Shahali",
+//     title: "Head of Event",
+//     image: "assets/staff/shahali.jpg",
+//   },
+//   {
+//     name: "Emad Emam Jome",
+//     title: "Head of Social",
+//     image: "assets/staff/emamjome.jpg",
+//   },
+// ];
 
 const faq = [
   {

@@ -1,19 +1,17 @@
 import { useState, useEffect } from "react";
 import {
   Navbar as NavbarComponent,
-  MobileNav,
   Typography,
   Button,
   IconButton,
   Collapse,
   // Avatar,
 } from "@material-tailwind/react";
-import {urls} from "../../global/Variables.ts";
-import {useNavigate} from "react-router-dom";
+// import {useNavigate} from "react-router-dom";
 
 const Navbar = () => {
   const [openNav, setOpenNav] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     window.addEventListener(
