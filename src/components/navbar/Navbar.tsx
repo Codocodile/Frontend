@@ -48,7 +48,7 @@ const Navbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <a href="#faq" className="flex items-center">
           FAQ
         </a>
       </Typography>
@@ -58,7 +58,7 @@ const Navbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <a href="#sponsers" className="flex items-center">
           Sponsers
         </a>
       </Typography>
