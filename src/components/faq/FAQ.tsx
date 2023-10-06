@@ -5,10 +5,7 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 
-interface IconProps {
-  id: number;
-  open: number;
-}
+import './faq.css'
 
 interface QA {
   question: string;
@@ -17,27 +14,6 @@ interface QA {
 
 interface Props {
   data: QA[];
-}
-
-function Icon({ id, open }: IconProps) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={2}
-      stroke="currentColor"
-      className={`${
-        id === open ? "rotate-180" : ""
-      } h-5 w-5 transition-transform`}
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-      />
-    </svg>
-  );
 }
 
 const FAQ = ({ data }: Props) => {
@@ -51,7 +27,7 @@ const FAQ = ({ data }: Props) => {
         <Accordion
           key={index}
           open={open === index + 1}
-          icon={<Icon id={index + 1} open={open} />}
+          className="text-right faq"
         >
           <AccordionHeader
             onClick={() => handleOpen(index + 1)}
@@ -59,7 +35,7 @@ const FAQ = ({ data }: Props) => {
           >
             {qa.question}
           </AccordionHeader>
-          <AccordionBody className="text-gray-200">{qa.answer}</AccordionBody>
+          <AccordionBody className="text-gray-100">{qa.answer}</AccordionBody>
         </Accordion>
       ))}
     </>

@@ -30,10 +30,10 @@ const Header = () => {
           <img src="assets/main-croc.png" alt="logo" className="max-w-lg" />
         </div>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="logos flex items-center gap-4">
         <img src="assets/SUTLogo.svg" />
         <img src="assets/SSCLogo.svg" />
-        <img src="assets/SnappFoodLogo.svg" />
+        <img src="assets/SnappFoodLogo.png" />
       </div>
     </div>
   );

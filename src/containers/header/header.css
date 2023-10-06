@@ -9,3 +9,7 @@
 .header-type-writer {
     font-family: IBM Plex Mono, monospace !important;
 }
+
+.logos img{
+    max-height: 5rem;
+}
