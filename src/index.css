@@ -8,7 +8,7 @@ body {
 
 @font-face {
   font-family: "B Yekan";
-  src: local("B Yekan"), url("assets/Yekan.ttf") format("ttf");
+  src: local("B Yekan"), url("Yekan.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
