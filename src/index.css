@@ -3,5 +3,12 @@
 @tailwind utilities;
 
 body {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: "B Yekan";
+  src: local("B Yekan"), url("assets/Yekan.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
 }
