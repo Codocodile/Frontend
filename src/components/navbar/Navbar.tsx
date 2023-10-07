@@ -79,7 +79,7 @@ const Navbar = () => {
             href="#"
             className="mr-4 cursor-pointer py-1.5 font-large font-bold"
           >
-            <img src="assets/Header_logo.png" alt="header_logo" width={100} height={100} />
+            <img src="assets/Header_logo.png" alt="header_logo" width={200} height={200} />
           </Typography>
         </div>
         <div className="flex items-center gap-4">

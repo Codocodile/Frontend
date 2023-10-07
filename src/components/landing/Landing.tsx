@@ -94,13 +94,13 @@ function Landing() {
     <>
       <Navbar/>
       <Header/>
-      <Section name="timeline">
+      <Section name="timeline" side="left" dino={2}>
         <EventTimeline events={timeline}/>
       </Section>
       {/* <Section name="staff">
         <StaffCarousel staff={staff}/>
       </Section> */}
-      <Section name="FAQ" capitalize={true}>
+      <Section name="FAQ" capitalize={true}  side="right" dino={3}>
         <FAQ data={faq}/>
       </Section>
       <Footer/>
