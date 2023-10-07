@@ -4,11 +4,29 @@
 
 body {
   scroll-behavior: smooth;
+  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'Rubik', sans-serif;
 }
 
 @font-face {
   font-family: "B Yekan";
-  src: local("B Yekan"), url("Yekan.ttf") format("ttf");
+  src: url("assets/Yekan.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+  font-family: "Vazir";
+  src: url("assets/Vazir.ttf") format("ttf"),
+       url("assets/Vazir.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-sans {
+  font-family: 'Rubik', sans-serif;
+}
+
+.rtl-grid {
+  direction: rtl;
 }

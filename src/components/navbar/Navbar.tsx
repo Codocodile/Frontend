@@ -7,11 +7,12 @@ import {
   Collapse,
   // Avatar,
 } from "@material-tailwind/react";
-// import {useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {urls} from "../../global/Variables.ts";
 
 const Navbar = () => {
   const [openNav, setOpenNav] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.addEventListener(
@@ -38,28 +39,8 @@ const Navbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#staff" className="flex items-center">
-          Staff
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
         <a href="#faq" className="flex items-center">
           FAQ
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#sponsers" className="flex items-center">
-          Sponsers
         </a>
       </Typography>
     </ul>
@@ -84,7 +65,7 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
-          {/* <Button
+          <Button
             variant="outlined"
             size="sm"
             className="hidden lg:inline-block"
@@ -99,7 +80,7 @@ const Navbar = () => {
             onClick={() => navigate(urls.signUp)}
           >
             <span>Sign Up</span>
-          </Button> */}
+          </Button>
           <IconButton
             variant="text"
             className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"

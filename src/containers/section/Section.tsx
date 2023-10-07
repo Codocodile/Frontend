@@ -1,4 +1,5 @@
 import { Typography } from "@material-tailwind/react";
+import "./section.css";
 
 interface Props {
   name: string;
@@ -36,7 +37,7 @@ const Section = (props: Props) => {
           <Typography
             variant="h1"
             color="white"
-            className="text-white mb-6 mt-6"
+            className="text-white mb-6 mt-6 section-title"
           >
             {props.capitalize
               ? props.name.toUpperCase()
