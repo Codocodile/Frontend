@@ -7,12 +7,12 @@ import {
   Collapse,
   // Avatar,
 } from "@material-tailwind/react";
-import {useNavigate} from "react-router-dom";
-import {urls} from "../../global/Variables.ts";
+// import {useNavigate} from "react-router-dom";
+// import {urls} from "../../global/Variables.ts";
 
 const Navbar = () => {
   const [openNav, setOpenNav] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     window.addEventListener(
@@ -69,7 +69,7 @@ const Navbar = () => {
             variant="outlined"
             size="sm"
             className="hidden lg:inline-block"
-            onClick={() => navigate(urls.signIn)}
+            // onClick={() => navigate(urls.signIn)}
           >
             <span>Sign In</span>
           </Button>
@@ -77,7 +77,7 @@ const Navbar = () => {
             variant="gradient"
             size="sm"
             className="hidden lg:inline-block"
-            onClick={() => navigate(urls.signUp)}
+            // onClick={() => navigate(urls.signUp)}
           >
             <span>Sign Up</span>
           </Button>
