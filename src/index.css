@@ -9,16 +9,9 @@ body {
 }
 
 @font-face {
-  font-family: "B Yekan";
-  src: url("assets/Yekan.ttf") format("ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "Vazir";
-  src: url("assets/Vazir.ttf") format("ttf"),
-       url("assets/Vazir.woff") format("woff");
+  src: url("Vazir.ttf") format("ttf"),
+       url("Vazir.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
