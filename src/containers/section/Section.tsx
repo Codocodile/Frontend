@@ -26,14 +26,13 @@ function slugify(str: string) {
 const Section = (props: Props) => {
   return (
     <div id={slugify(props.name)} className="flex bg-gray-900 pt-8">
-      <div className="flex items-center justify-between mx-auto text-center">
+      <div className="flex flex-col lg:flex-row items-center justify-between mx-auto text-center">
         <img
           src={"assets/crocs/" + props.dino + ".png"}
-          width={416}
-          height={320}
-          className={(props.side == "left" ? "block" : "hidden") + " mr-40"}
+          height="auto"
+          className={(props.side == "left" ? "block" : "hidden") + " lg:mr-40 w-[48rem] md:w-[20rem]"}
         />
-        <div className="container w-[48rem] mx-auto text-center">
+        <div className="container sm:w-[28rem] md:w-[36rem] lg:w-[48rem] mx-auto text-center">
           <Typography
             variant="h1"
             color="white"
@@ -47,9 +46,8 @@ const Section = (props: Props) => {
         </div>
         <img
           src={"assets/crocs/" + props.dino + ".png"}
-          width={416}
-          height={320}
-          className={(props.side == "right" ? "block" : "hidden") + " ml-40"}
+          height="auto"
+          className={(props.side == "right" ? "block" : "hidden") + " lg:ml-40 w-[48rem] md:w-[20rem]"}
         />
       </div>
     </div>

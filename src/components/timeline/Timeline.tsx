@@ -22,7 +22,7 @@ const EventTimeline = ({ events }: Props) => {
   return (
     <Card
       color="gray"
-      className="mx-auto items-center lg:w-[48rem] md:w-[18rem] p-4 bg-gray-600"
+      className="mx-auto items-center p-4 bg-gray-600"
     >
       <Timeline>
         {events.map((event, index) => (
