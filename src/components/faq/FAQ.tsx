@@ -31,7 +31,7 @@ const FAQ = ({ data }: Props) => {
         >
           <AccordionHeader
             onClick={() => handleOpen(index + 1)}
-            className="text-white"
+            className="text-white text-right"
           >
             {qa.question}
           </AccordionHeader>
