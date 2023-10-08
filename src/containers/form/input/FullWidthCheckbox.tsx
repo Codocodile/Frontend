@@ -1,11 +1,8 @@
 import { Checkbox } from "@material-tailwind/react";
 
-function FullWidthCheckbox({
-  label,
-  title,
-  id,
-}: {
+function FullWidthCheckbox({ label, name, title, id,}: {
   label: string;
+  name: string;
   title: string;
   id: string;
 }) {
@@ -17,7 +14,7 @@ function FullWidthCheckbox({
       >
         {title}
       </label>
-      <Checkbox label={label} className="" crossOrigin="" />
+      <Checkbox label={label} className="" crossOrigin="" name={name} />
     </div>
   );
 }

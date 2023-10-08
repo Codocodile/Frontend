@@ -2,10 +2,12 @@ import { Select, Option } from "@material-tailwind/react";
 
 function FullWidthSelect({
   label,
+  name,
   options,
   id,
 }: {
   label: string;
+  name: string;
   options: string[];
   id: string;
 }) {
@@ -19,6 +21,7 @@ function FullWidthSelect({
       </label>
       <Select
         label={label}
+        name={name}
         className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
       >
         {options.map((option, index) => (
