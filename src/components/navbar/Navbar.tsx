@@ -7,12 +7,12 @@ import {
   Collapse,
   // Avatar,
 } from "@material-tailwind/react";
-// import {useNavigate} from "react-router-dom";
-// import {urls} from "../../global/Variables.ts";
+import { useNavigate } from "react-router-dom";
+import { urls } from "../../global/Variables.ts";
 
 const Navbar = () => {
   const [openNav, setOpenNav] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.addEventListener(
@@ -60,7 +60,12 @@ const Navbar = () => {
             href="#"
             className="mr-4 cursor-pointer py-1.5 font-large font-bold"
           >
-            <img src="assets/Header_logo.png" alt="header_logo" width={200} height={200} />
+            <img
+              src="assets/Header_logo.png"
+              alt="header_logo"
+              width={200}
+              height={200}
+            />
           </Typography>
         </div>
         <div className="flex items-center gap-4">
@@ -77,7 +82,7 @@ const Navbar = () => {
             variant="gradient"
             size="sm"
             className="hidden lg:inline-block"
-            // onClick={() => navigate(urls.signUp)}
+            onClick={() => navigate(urls.signUp)}
           >
             <span>Sign Up</span>
           </Button>
@@ -125,7 +130,13 @@ const Navbar = () => {
         <Button variant="outlined" size="sm" fullWidth className="mb-2">
           <span>Sign In</span>
         </Button>
-        <Button variant="gradient" size="sm" fullWidth className="mb-2">
+        <Button
+          variant="gradient"
+          size="sm"
+          fullWidth
+          className="mb-2"
+          onClick={() => navigate(urls.signUp)}
+        >
           <span>Sign Up</span>
         </Button>
       </Collapse>

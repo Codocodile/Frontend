@@ -4,28 +4,77 @@ import FullWidthSelect from "./input/FullWidthSelect.tsx";
 import FormHeader from "./FormHeader.tsx";
 import FullWidthCheckbox from "./input/FullWidthCheckbox.tsx";
 import axios from "axios";
+import { Alert } from "@material-tailwind/react";
+import { useState } from "react";
+import { useNavigate, NavigateFunction } from "react-router-dom";
+import { urls } from "../../global/Variables.ts";
 
-function signUp(e: React.FormEvent<HTMLFormElement>) {
+const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+
+function signUp(
+  e: React.FormEvent<HTMLFormElement>,
+  setSuccessAlert: React.Dispatch<React.SetStateAction<boolean>>,
+  setFailureAlert: React.Dispatch<React.SetStateAction<boolean>>,
+  navigate: NavigateFunction,
+  status: string,
+  gender: string
+) {
   e.preventDefault();
   const data = new FormData(e.currentTarget);
   const object: any = {};
   data.forEach(function (value, key) {
     object[key] = value;
   });
-  console.log(object)
+  object["is_workshop_attender"] = object["is_workshop_attender"] === "on";
+  if (status === "Junior (Highschool)") {
+    object["status"] = "J";
+  } else if (status === "Senior (University)") {
+    object["status"] = "S";
+  } else {
+    object["status"] = "P";
+  }
+  object["gender"] = gender === "Male" ? "M" : "F";
+  object["user"] = {
+    email: object["email"],
+    password: object["password"],
+    first_name: object["first_name"],
+    last_name: object["last_name"],
+  };
+  delete object["email"];
+  delete object["password"];
+  delete object["first_name"];
+  delete object["last_name"];
+  console.log(object);
   axios
-    .post("http://localhost:8000/api/create-challenger/", object)
+    .post("https://codocodile.com/api/api/create-challenger/", object)
     .then((res) => {
-      console.log(res);
+      if (res.status === 201 || res.status === 200) {
+        setSuccessAlert(true);
+        delay(5000).then(() => {
+          navigate(urls.landing);
+        });
+      } else {
+        setFailureAlert(true);
+      }
     })
-    .catch((err) => {
-      console.log(err.response);
+    .catch(() => {
+      setFailureAlert(true);
     });
 }
 
-function signIn() {}
+function signIn(
+  e: React.FormEvent<HTMLFormElement>,
+  setSuccessAlert: React.Dispatch<React.SetStateAction<boolean>>,
+  setFailureAlert: React.Dispatch<React.SetStateAction<boolean>>
+) {}
 
 function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
+  const [successAlert, setSuccessAlert] = useState(false);
+  const [failureAlert, setFailureAlert] = useState(false);
+  const [status, setStatus] = useState("Junior (Highschool)");
+  const [gender, setGender] = useState("Male");
+  const navigate = useNavigate();
+
   return (
     <div
       className={
@@ -34,22 +83,40 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
     >
       <FormHeader text={headerText} />
       <form
-        onSubmit={headerText === "Sign Up" ? signUp : signIn}
+        onSubmit={(e) =>
+          headerText === "Sign Up"
+            ? signUp(e, setSuccessAlert, setFailureAlert, navigate, status, gender)
+            : signIn(e, setSuccessAlert, setFailureAlert)
+        }
         className="max-w-2xl mx-auto bg-white p-10 rounded-lg shadow-2xl"
       >
+        <Alert
+          open={failureAlert}
+          onClose={() => setFailureAlert(false)}
+          color="red"
+        >
+          Sign Up Failed!
+        </Alert>
+        <Alert
+          open={successAlert}
+          onClose={() => setSuccessAlert(false)}
+          color="green"
+        >
+          Sign Up Successful!
+        </Alert>
         {headerText === "Sign Up" ? (
           <>
             <div className="flex flex-wrap -mx-3 mb-3">
               <HalfWidthInput
                 label={"First Name"}
-                name="first-name"
+                name="first_name"
                 placeholder={"First Name"}
                 id={"sign-in-first-name"}
                 type={"text"}
               />
               <HalfWidthInput
                 label={"Last Name"}
-                name="last-name"
+                name="last_name"
                 placeholder={"Last Name"}
                 id={"sign-in-last-name"}
                 type={"text"}
@@ -58,14 +125,14 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
             <div className="flex flex-wrap -mx-3 mb-3">
               <HalfWidthInput
                 label={"First Name in Persian"}
-                name="first-name-persian"
+                name="first_name_persian"
                 placeholder={"First Name"}
                 id={"sign-in-first-name-persian"}
                 type={"text"}
               />
               <HalfWidthInput
                 label={"Last Name in Persian"}
-                name="last-name-persian"
+                name="last_name_persian"
                 placeholder={"Last Name"}
                 id={"sign-in-last-name-persian"}
                 type={"text"}
@@ -93,7 +160,7 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
           {headerText === "Sign Up" ? (
             <FullWidthInput
               label={"Phone Number"}
-              name="phone-number"
+              name="phone_number"
               placeholder={"09123456789"}
               id={"sign-in-phone"}
               type={"text"}
@@ -111,19 +178,21 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
                 "Senior (University)",
                 "Pro (Medalist)",
               ]}
-              name="division"
+              onChange={setStatus}
+              name="status"
               id="sign-in-status"
             />
             <FullWidthSelect
               label={"Gender"}
               options={["Male", "Female"]}
-              name="sex"
+              onChange={setGender}
+              name="gender"
               id="sign-in-gender"
             />
             <FullWidthCheckbox
               title="Workshops"
               label={"Want to particiapte in software workshops?"}
-              name="workshops"
+              name="is_workshop_attender"
               id="sign-in-workshop"
             />
           </div>
