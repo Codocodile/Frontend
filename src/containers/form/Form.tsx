@@ -62,11 +62,7 @@ function signUp(
     });
 }
 
-function signIn(
-  e: React.FormEvent<HTMLFormElement>,
-  setSuccessAlert: React.Dispatch<React.SetStateAction<boolean>>,
-  setFailureAlert: React.Dispatch<React.SetStateAction<boolean>>
-) {}
+function signIn() {}
 
 function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
   const [successAlert, setSuccessAlert] = useState(false);
@@ -86,7 +82,7 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
         onSubmit={(e) =>
           headerText === "Sign Up"
             ? signUp(e, setSuccessAlert, setFailureAlert, navigate, status, gender)
-            : signIn(e, setSuccessAlert, setFailureAlert)
+            : signIn()
         }
         className="max-w-2xl mx-auto bg-white p-10 rounded-lg shadow-2xl"
       >
