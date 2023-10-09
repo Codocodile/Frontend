@@ -4,13 +4,13 @@ import "./header.css";
 
 const Header = () => {
   return (
-    <div className="p-4 md:p-8 header-wrapper flex items-center justify-between flex-col h-[60rem] md:h-[36rem]">
+    <div className="p-4 md:p-8 header-wrapper flex items-center justify-between flex-col h-[60rem] md:h-[48rem] lg:h-[36rem]">
       <div className="container mx-auto flex items-center justify-between flex-col-reverse lg:flex-row md:mb-8">
         <div className="flex items-center gap-4 w-1/2 min-w-1/2 h-1/2 min-h-1/2">
           <Typography
             variant="h1"
             color="white"
-            className="p-1 font-normal header-type-writer"
+            className="p-1 font-normal header-type-writer text-4xl md:text-5xl"
           >
             <Typewriter
               options={{
