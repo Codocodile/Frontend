@@ -4,10 +4,11 @@ import FullWidthSelect from "./input/FullWidthSelect.tsx";
 import FormHeader from "./FormHeader.tsx";
 import FullWidthCheckbox from "./input/FullWidthCheckbox.tsx";
 import axios from "axios";
-import { Alert } from "@material-tailwind/react";
+import { Alert, Typography } from "@material-tailwind/react";
 import { useState } from "react";
 import { useNavigate, NavigateFunction } from "react-router-dom";
 import { urls } from "../../global/Variables.ts";
+import { HashLink } from "react-router-hash-link";
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
@@ -74,14 +75,21 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
   return (
     <div
       className={
-        "flex justify-center items-center flex-col bg-gradient-to-b from-red-900 to-gray-900 h-screen"
+        "flex justify-center items-center flex-col bg-gradient-to-b from-green-900 to-gray-900 h-screen"
       }
     >
       <FormHeader text={headerText} />
       <form
         onSubmit={(e) =>
           headerText === "Sign Up"
-            ? signUp(e, setSuccessAlert, setFailureAlert, navigate, status, gender)
+            ? signUp(
+                e,
+                setSuccessAlert,
+                setFailureAlert,
+                navigate,
+                status,
+                gender
+              )
             : signIn()
         }
         className="max-w-2xl mx-auto bg-white p-10 rounded-lg shadow-2xl"
@@ -187,7 +195,21 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
             />
             <FullWidthCheckbox
               title="Workshops"
-              label={"Want to particiapte in software workshops?"}
+              label={
+                <Typography color="blue-gray" className="flex font-medium">
+                  Want to particiapte in&nbsp; 
+                  <Typography
+                    as="a"
+                    color="blue"
+                    className="font-medium transition-colors hover:text-blue-700"
+                  >
+                    <HashLink to="../#imperfect-minds-(software-engineering-workshop)">
+                      Software Workshops
+                    </HashLink>
+                  </Typography>
+                  ?
+                </Typography>
+              }
               name="is_workshop_attender"
               id="sign-in-workshop"
             />
