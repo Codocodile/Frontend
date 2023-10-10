@@ -1,4 +1,4 @@
-import { Footer, Header, Section } from "../../containers";
+import { Footer, Header, Section, TextOnlySection } from "../../containers";
 import { Navbar, EventTimeline, FAQ } from "../";
 
 function shuffle(array: number[]) {
@@ -131,13 +131,19 @@ function Landing() {
     <>
       <Navbar />
       <Header />
-      <Section name="timeline" side="left" dino={crocs[0]}>
+      <Section name="introduction" side="right" dino={crocs[0]}>
+        <TextOnlySection text="مسابقه آموزشی کدوکدیل، یک رقابت فرصت‌بخش و گیرا برای دانشجویان و دانش‌آموزان علاقه‌مند به علوم کامپیوتر و برنامه‌نویسی است. این مسابقه در سه سطح Junior ،Senior و Pro برگزار می‌شود. دانشجویان از رشته‌های مهندسی کامپیوتر، علوم کامپیوتر، مهندسی برق و علوم ریاضی و حتی تمامی دانشجویانی که درس مبانی برنامه‌نویسی را پاس کرده‌اند و به حوزه الگوریتم علاقه‌مند هستند، امکان شرکت در این مسابقه را دارند. در این مسابقه زبان‌های برنامه‌نویسی C، C++، Java و Python در سیستم داوری مسابقه پشتیبانی می‌شوند. قبل از مسابقه، کارگاه‌های آموزشی برگزار می‌شود تا شرکت‌کنندگان بتوانند مهارت‌های خود را در زمینه‌ی الگوریتم و مهندسی‌ نرم‌افزار تقویت کنند. مرحله اول مسابقه به صورت مجازی و مرحله دوم به صورت حضوری در دانشگاه صنعتی شریف برگزار می‌شود و شرکت در مسابقه فقط در قالب تیم‌های دو نفره ممکن است. در صورتی که هم‌تیمی نداشته باشید، می‌توانید در گروه تلگرامی مخصوص شرکت‌کنندگان هم‌تیمی مناسب خود را پیدا کنید. شرکت در مسابقه انتخابی آنلاین رایگان است و برای تیم‌های برتر مسابقه حضوری، جوایز نقدی به همراه دارد." />
+      </Section>
+      <Section name="timeline" side="left" dino={crocs[1]}>
         <EventTimeline events={timeline} />
       </Section>
       {/* <Section name="staff">
         <StaffCarousel staff={staff}/>
       </Section> */}
-      <Section name="FAQ" capitalize={true} side="right" dino={crocs[1]}>
+      <Section name="Imperfect Minds (Software Engineering Workshop)" side="right" dino={crocs[2]}>
+        <TextOnlySection text="تو این کارگاه قراره با مهندسی نرم‌افزار آشنا بشیم، اما از اول قراره بریم تو دل پروژه و دست به کد بشیم و حرفامون رو با کد بزنیم. بعد از این‌که اپیزود اول (NoseDive) از فصل سوم Black Mirror رو دیدید، با هم تیمی‌هاتون در موردش حرف بزنید و به یه ایده‌ی مشترک برسید. تو کارگاه، هر تیم سعی می‌کنه ایده‌ش رو تو قالب وب اپلیکیشن بالا بیاره. احتمالا بعضی‌هاتون (یا خیلی‌هاتون!) مخالف باشید با ایده‌ای که تو سریال مطرح می‌شه پس بیاید با ایده‌ی خودتون اجراش کنید. ارائه‌دهنده‌ی این کارگاه روژینا پورمقدم، دایرکتور مهندسی اسنپ‌فوده و تو کل زمان برگزاری منتورهای حرفه‌ای اسنپ‌فود کنارتون هستن و کمکتون می‌کنن." />
+      </Section>
+      <Section name="FAQ" capitalize={true} side="left" dino={crocs[3]}>
         <FAQ data={faq} />
       </Section>
       <Footer />
