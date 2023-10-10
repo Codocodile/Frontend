@@ -29,8 +29,31 @@ const Navbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
+        <a href="#introduction" className="flex items-center">
+          Introduction
+        </a>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+      >
         <a href="#timeline" className="flex items-center">
           Timeline
+        </a>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+      >
+        <a
+          href="#imperfect-minds-(software-engineering-workshop)"
+          className="flex items-center"
+        >
+          Imperfect Minds
         </a>
       </Typography>
       <Typography
