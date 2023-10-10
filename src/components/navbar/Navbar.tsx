@@ -9,6 +9,7 @@ import {
 } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { urls } from "../../global/Variables.ts";
+import { HashLink } from "react-router-hash-link";
 
 const Navbar = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -29,9 +30,9 @@ const Navbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#introduction" className="flex items-center">
-          Introduction
-        </a>
+        <HashLink to="#introduction" smooth={true}>
+          <a className="flex items-center">Introduction</a>
+        </HashLink>
       </Typography>
       <Typography
         as="li"
@@ -39,9 +40,9 @@ const Navbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#timeline" className="flex items-center">
-          Timeline
-        </a>
+        <HashLink to="#timeline" smooth={true}>
+          <a className="flex items-center">Timeline</a>
+        </HashLink>
       </Typography>
       <Typography
         as="li"
@@ -49,12 +50,12 @@ const Navbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a
-          href="#imperfect-minds-(software-engineering-workshop)"
-          className="flex items-center"
+        <HashLink
+          to="#imperfect-minds-(software-engineering-workshop)"
+          smooth={true}
         >
-          Imperfect Minds
-        </a>
+          <a className="flex items-center">Imperfect Minds</a>
+        </HashLink>
       </Typography>
       <Typography
         as="li"
@@ -62,9 +63,9 @@ const Navbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#faq" className="flex items-center">
-          FAQ
-        </a>
+        <HashLink to="#faq" smooth={true}>
+          <a className="flex items-center">FAQ</a>
+        </HashLink>
       </Typography>
     </ul>
   );

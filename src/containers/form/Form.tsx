@@ -203,7 +203,7 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
                     color="blue"
                     className="font-medium transition-colors hover:text-blue-700"
                   >
-                    <HashLink to="../#imperfect-minds-(software-engineering-workshop)">
+                    <HashLink to="../#imperfect-minds-(software-engineering-workshop)" smooth={true}>
                       Software Workshops
                     </HashLink>
                   </Typography>
