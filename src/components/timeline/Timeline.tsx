@@ -8,8 +8,10 @@ import {
   Typography,
   Card,
 } from "@material-tailwind/react";
+import './timeline.css'
 
 interface TimelineEvent {
+  date: string;
   title: string;
   description: string;
 }
@@ -20,30 +22,33 @@ interface Props {
 
 const EventTimeline = ({ events }: Props) => {
   return (
-    <Card
-      color="gray"
-      className="mx-auto items-center p-4 bg-gray-600"
-    >
+    <Card color="gray" className="mx-auto items-center p-4 bg-gray-600">
       <Timeline>
         {events.map((event, index) => (
-          <TimelineItem
-            key={index}>
+          <TimelineItem className="timeline-item" key={index}>
             {index != events.length - 1 && <TimelineConnector />}
             <TimelineHeader className="h-3">
               <TimelineIcon />
               <Typography
-                variant="h6"
+                variant="h4"
                 color="blue-gray"
                 className="leading-none text-white"
               >
-                {event.title}
+                {event.date}
               </Typography>
             </TimelineHeader>
-            <TimelineBody className="pb-8">
+            <TimelineBody className="mb-5 w-full">
+              <Typography
+                variant="h6"
+                color="gray"
+                className="font-normal text-left text-gray-200"
+              >
+                {event.title}
+              </Typography>
               <Typography
                 variant="small"
                 color="gray"
-                className="font-normal text-gray-200"
+                className="font-normal w-full text-gray-200 text-right timeline-description"
               >
                 {event.description}
               </Typography>

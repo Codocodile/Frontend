@@ -23,28 +23,34 @@ var crocs = shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
 
 const timeline = [
   {
-    title: "14 Mehr",
-    description: "Registeration Opens.",
+    date: "14 Mehr",
+    title: "Registeration Starts.",
+    description: "ثبت‌نام انفرادی در سایت شروع می‌شود. تیم‌بندی برای مسابقه و کارگاه‌ها در روزهای آتی انجام خواهد شد."
   },
   {
-    title: "21 Mehr",
-    description: "Registeration Closes.",
+    date: "23 - 26 Mehr",
+    title: "Algorithmic Workshops",
+    description: "کارگاه‌های آموزشی الگوریتم در ۴ روز از ۲۳ ام تا ۲۶ ام مهر ماه، با موضوعات داده‌ساختار،الگوریتم‌های گراف، تقسیم و حل، الگوریتم‌های حریصانه و برنامه‌نویسی پویا برگزار می‌شوند."
   },
   {
-    title: "22 Mehr",
-    description: "Algorithmic Workshops",
+    date: "24 Mehr",
+    title: "Registeration Closes.",
+    description: "مهلت ثبت‌نام انفرادی در رویداد تمام می‌شود."
   },
   {
-    title: "28 Mehr",
-    description: "Candidates Selection",
+    date: "28 Mehr",
+    title: "Selection Contest",
+    description: "مسابقه انتخابی به صورت مجازی در روز ۲۸ مهر برگزار می‌شود و تیم‌های راه یافته به مرحله نهایی حضوری از نتیجه این مسابقه انتخاب می‌شود."
   },
   {
-    title: "3 - 4 Aban",
-    description: "Software Engineering Workshops",
+    date: "3 - 4 Aban",
+    title: "Imperfect Minds (Software Engineering Workshop)",
+    description: "کارگاه مهندسی نرم‌افزار توسط اسپانسر رویداد، شرکت اسنپ فود، برگزار می‌شود. این کارگاه همراه با مسابقه در دو روز به صورت تیمی و حضوری در دانشگاه شریف برگزار می‌شود‌. توضیحات بیشتر کارگاه را در این بخش می‌توانید بخوانید."
   },
   {
-    title: "11 - 12 Aban",
-    description: "Final Contest",
+    date: "11 - 12 Aban",
+    title: "Final Contest",
+    description: "مسابقات نهایی رویداد در دو روز به صورت حضوری در دانشگاه شریف برگزار می‌شود. جوایز و رتبه‌های نهایی پس از این رقابت مشخص خواهد شد."
   },
 ];
 
