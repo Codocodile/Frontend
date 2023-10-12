@@ -34,16 +34,16 @@ const EventTimeline = ({ events }: Props) => {
                 color="blue-gray"
                 className="leading-none text-white"
               >
-                {event.date}
+                {event.title}
               </Typography>
             </TimelineHeader>
             <TimelineBody className="mb-5 w-full">
               <Typography
-                variant="h6"
+                variant="h5"
                 color="gray"
                 className="font-normal text-left text-gray-200"
               >
-                {event.title}
+                {event.date}
               </Typography>
               <Typography
                 variant="small"

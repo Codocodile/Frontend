@@ -75,7 +75,7 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
   return (
     <div
       className={
-        "flex justify-center items-center flex-col bg-gradient-to-b from-green-900 to-gray-900 h-screen"
+        "flex justify-center items-center flex-col bg-gradient-to-b from-green-900 to-gray-900 min-h-screen h-full"
       }
     >
       <FormHeader text={headerText} />
