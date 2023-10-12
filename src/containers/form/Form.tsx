@@ -16,6 +16,7 @@ function signUp(
   e: React.FormEvent<HTMLFormElement>,
   setSuccessAlert: React.Dispatch<React.SetStateAction<boolean>>,
   setFailureAlert: React.Dispatch<React.SetStateAction<boolean>>,
+  setFailureResponse: React.Dispatch<React.SetStateAction<string>>,
   navigate: NavigateFunction,
   status: string,
   gender: string
@@ -47,7 +48,7 @@ function signUp(
   delete object["last_name"];
   console.log(object);
   axios
-    .post("https://codocodile.com/api/api/create-challenger/", object)
+    .post("http://localhost:8000/api/create-challenger/", object)
     .then((res) => {
       if (res.status === 201 || res.status === 200) {
         setSuccessAlert(true);
@@ -55,11 +56,27 @@ function signUp(
           navigate(urls.landing);
         });
       } else {
-        setFailureAlert(true);
+        // setFailureAlert(true);
       }
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
+      var type = err.response.data.type
+      var errors = err.response.data.errors
+      console.log(type, errors[0].detail)
+      if (errors) {
+        var error = errors[0].detail
+        if (error == 'UNIQUE constraint failed: auth_user.username') {
+          error = 'This phone number is already taken!'
+        }
+        setFailureResponse(error)
+      } else {
+        setFailureResponse("Something went wrong!")
+      }
       setFailureAlert(true);
+      delay(5000).then(() => {
+        setFailureAlert(false);
+      });
     });
 }
 
@@ -68,6 +85,7 @@ function signIn() {}
 function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
   const [successAlert, setSuccessAlert] = useState(false);
   const [failureAlert, setFailureAlert] = useState(false);
+  const [failureResponse, setFailureResponse] = useState("");
   const [status, setStatus] = useState("Junior (Highschool)");
   const [gender, setGender] = useState("Male");
   const navigate = useNavigate();
@@ -86,6 +104,7 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
                 e,
                 setSuccessAlert,
                 setFailureAlert,
+                setFailureResponse,
                 navigate,
                 status,
                 gender
@@ -94,20 +113,6 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
         }
         className="max-w-2xl mx-auto bg-white p-10 rounded-lg shadow-2xl"
       >
-        <Alert
-          open={failureAlert}
-          onClose={() => setFailureAlert(false)}
-          color="red"
-        >
-          Sign Up Failed!
-        </Alert>
-        <Alert
-          open={successAlert}
-          onClose={() => setSuccessAlert(false)}
-          color="green"
-        >
-          Sign Up Successful!
-        </Alert>
         {headerText === "Sign Up" ? (
           <>
             <div className="flex flex-wrap -mx-3 mb-3">
@@ -197,13 +202,16 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
               title="Workshops"
               label={
                 <Typography color="blue-gray" className="flex font-medium">
-                  Want to particiapte in&nbsp; 
+                  Want to particiapte in&nbsp;
                   <Typography
                     as="a"
                     color="blue"
                     className="font-medium transition-colors hover:text-blue-700"
                   >
-                    <HashLink to="../#imperfect-minds-(software-engineering-workshop)" smooth={true}>
+                    <HashLink
+                      to="../#imperfect-minds-(software-engineering-workshop)"
+                      smooth={true}
+                    >
                       Software Workshops
                     </HashLink>
                   </Typography>
@@ -223,6 +231,20 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
         >
           Submit
         </button>
+        <Alert
+          open={failureAlert}
+          onClose={() => setFailureAlert(false)}
+          color="red"
+        >
+          {failureResponse}
+        </Alert>
+        <Alert
+          open={successAlert}
+          onClose={() => setSuccessAlert(false)}
+          color="green"
+        >
+          Sign Up Successful!
+        </Alert>
       </form>
     </div>
   );

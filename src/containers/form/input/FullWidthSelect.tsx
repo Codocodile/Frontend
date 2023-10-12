@@ -22,6 +22,7 @@ function FullWidthSelect({
         {label}
       </label>
       <Select
+        value={options[0]}
         onChange={onChange}
         label={label}
         name={name}
