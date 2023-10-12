@@ -48,7 +48,7 @@ function signUp(
   delete object["last_name"];
   console.log(object);
   axios
-    .post("http://localhost:8000/api/create-challenger/", object)
+    .post("https://codocodile.com/api/api/create-challenger/", object)
     .then((res) => {
       if (res.status === 201 || res.status === 200) {
         setSuccessAlert(true);
@@ -56,14 +56,15 @@ function signUp(
           navigate(urls.landing);
         });
       } else {
-        // setFailureAlert(true);
+        setFailureResponse("Something went wrong!")
+        setFailureAlert(true);
+        delay(5000).then(() => {
+          setFailureAlert(false);
+        });
       }
     })
     .catch((err) => {
-      console.log(err);
-      var type = err.response.data.type
       var errors = err.response.data.errors
-      console.log(type, errors[0].detail)
       if (errors) {
         var error = errors[0].detail
         if (error == 'UNIQUE constraint failed: auth_user.username') {
