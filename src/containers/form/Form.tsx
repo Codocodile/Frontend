@@ -236,6 +236,7 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
           open={failureAlert}
           onClose={() => setFailureAlert(false)}
           color="red"
+          className="mt-5"
         >
           {failureResponse}
         </Alert>
@@ -243,6 +244,7 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
           open={successAlert}
           onClose={() => setSuccessAlert(false)}
           color="green"
+          className="mt-5"
         >
           Sign Up Successful!
         </Alert>
