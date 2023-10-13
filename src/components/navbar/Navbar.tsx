@@ -94,14 +94,14 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
-          {/* <Button
+          <Button
             variant="outlined"
             size="sm"
             className="hidden lg:inline-block"
-            // onClick={() => navigate(urls.signIn)}
+            onClick={() => navigate(urls.signIn)}
           >
             <span>Sign In</span>
-          </Button> */}
+          </Button>
           <Button
             variant="gradient"
             size="sm"
@@ -151,9 +151,15 @@ const Navbar = () => {
       </div>
       <Collapse open={openNav}>
         {navList}
-        {/* <Button variant="outlined" size="sm" fullWidth className="mb-2">
+        <Button
+          variant="outlined"
+          size="sm"
+          fullWidth
+          className="mb-2"
+          onClick={() => navigate(urls.signIn)}
+        >
           <span>Sign In</span>
-        </Button> */}
+        </Button>
         <Button
           variant="gradient"
           size="sm"

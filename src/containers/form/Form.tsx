@@ -10,6 +10,8 @@ import { useNavigate, NavigateFunction } from "react-router-dom";
 import { urls } from "../../global/Variables.ts";
 import { HashLink } from "react-router-hash-link";
 
+const API_URL = "http://localhost:8000";
+
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 function signUp(
@@ -46,9 +48,8 @@ function signUp(
   delete object["password"];
   delete object["first_name"];
   delete object["last_name"];
-  console.log(object);
   axios
-    .post("https://codocodile.com/api/api/create-challenger/", object)
+    .post(API_URL + "/api/create-challenger/", object)
     .then((res) => {
       if (res.status === 201 || res.status === 200) {
         setSuccessAlert(true);
@@ -56,7 +57,7 @@ function signUp(
           navigate(urls.landing);
         });
       } else {
-        setFailureResponse("Something went wrong!")
+        setFailureResponse("Something went wrong!");
         setFailureAlert(true);
         delay(5000).then(() => {
           setFailureAlert(false);
@@ -64,15 +65,15 @@ function signUp(
       }
     })
     .catch((err) => {
-      var errors = err.response.data.errors
+      var errors = err.response.data.errors;
       if (errors) {
-        var error = errors[0].detail
-        if (error == 'UNIQUE constraint failed: auth_user.username') {
-          error = 'This phone number is already taken!'
+        var error = errors[0].detail;
+        if (error == "UNIQUE constraint failed: auth_user.username") {
+          error = "This phone number is already taken!";
         }
-        setFailureResponse(error)
+        setFailureResponse(error);
       } else {
-        setFailureResponse("Something went wrong!")
+        setFailureResponse("Something went wrong!");
       }
       setFailureAlert(true);
       delay(5000).then(() => {
@@ -81,7 +82,56 @@ function signUp(
     });
 }
 
-function signIn() {}
+function signIn(
+  e: React.FormEvent<HTMLFormElement>,
+  setSuccessAlert: React.Dispatch<React.SetStateAction<boolean>>,
+  setFailureAlert: React.Dispatch<React.SetStateAction<boolean>>,
+  setFailureResponse: React.Dispatch<React.SetStateAction<string>>,
+  navigate: NavigateFunction
+) {
+  e.preventDefault();
+  const data = new FormData(e.currentTarget);
+  const object: any = {};
+  data.forEach(function (value, key) {
+    object[key] = value;
+  });
+  object["username"] = object["phone_number"];
+  delete object["phone_number"];
+  axios
+    .post(API_URL + "/api/token/", object)
+    .then((res) => {
+      if (res.status === 201 || res.status === 200) {
+        setSuccessAlert(true);
+        localStorage.setItem("auth.access", res.data.access)
+        localStorage.setItem("auth.refresh", res.data.refresh)
+        delay(5000).then(() => {
+          navigate(urls.landing);
+        });
+      } else {
+        setFailureResponse("Something went wrong!");
+        setFailureAlert(true);
+        delay(5000).then(() => {
+          setFailureAlert(false);
+        });
+      }
+    })
+    .catch((err) => {
+      var errors = err.response.data.errors;
+      if (errors) {
+        var error = errors[0].detail;
+        if (error == "UNIQUE constraint failed: auth_user.username") {
+          error = "This phone number is already taken!";
+        }
+        setFailureResponse(error);
+      } else {
+        setFailureResponse("Something went wrong!");
+      }
+      setFailureAlert(true);
+      delay(5000).then(() => {
+        setFailureAlert(false);
+      });
+    });
+}
 
 function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
   const [successAlert, setSuccessAlert] = useState(false);
@@ -110,7 +160,13 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
                 status,
                 gender
               )
-            : signIn()
+            : signIn(
+                e,
+                setSuccessAlert,
+                setFailureAlert,
+                setFailureResponse,
+                navigate
+              )
         }
         className="max-w-2xl mx-auto bg-white p-10 rounded-lg shadow-2xl"
       >
@@ -154,12 +210,23 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
         )}
         <div className="flex flex-wrap -mx-3">
           <FullWidthInput
-            label={"Email"}
-            name="email"
-            placeholder={"example@gmail.com"}
-            id={"sign-in-email"}
-            type={"email"}
+            label={"Phone Number"}
+            name="phone_number"
+            placeholder={"09123456789"}
+            id={"sign-in-phone"}
+            type={"text"}
           />
+          {headerText === "Sign Up" ? (
+            <FullWidthInput
+              label={"Email"}
+              name="email"
+              placeholder={"example@gmail.com"}
+              id={"sign-in-email"}
+              type={"email"}
+            />
+          ) : (
+            <></>
+          )}
           <FullWidthInput
             label={"Password"}
             name="password"
@@ -167,17 +234,6 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
             id={"sign-in-password"}
             type={"password"}
           />
-          {headerText === "Sign Up" ? (
-            <FullWidthInput
-              label={"Phone Number"}
-              name="phone_number"
-              placeholder={"09123456789"}
-              id={"sign-in-phone"}
-              type={"text"}
-            />
-          ) : (
-            <></>
-          )}
         </div>
         {headerText === "Sign Up" ? (
           <div className="flex flex-wrap -mx-3 mb-6">
@@ -246,7 +302,7 @@ function Form({ headerText }: { headerText: "Sign In" | "Sign Up" }) {
           color="green"
           className="mt-5"
         >
-          Sign Up Successful!
+          Sign {headerText == "Sign Up" ? "Up" : "In"} Successful!
         </Alert>
       </form>
     </div>
