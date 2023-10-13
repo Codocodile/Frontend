@@ -10,7 +10,7 @@ import { useNavigate, NavigateFunction } from "react-router-dom";
 import { urls } from "../../global/Variables.ts";
 import { HashLink } from "react-router-hash-link";
 
-const API_URL = "http://localhost:8000";
+const API_URL = "https://codocodile.com/api";
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
