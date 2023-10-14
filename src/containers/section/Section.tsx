@@ -1,6 +1,6 @@
 import { Typography } from "@material-tailwind/react";
 import "./section.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface Props {
   name: string;
@@ -25,7 +25,7 @@ function slugify(str: string) {
 }
 
 const Section = ({ name, capitalize, children, side, dino }: Props) => {
-  const [dinoIcon, setDinoIcon] = useState(dino === undefined ? 1 + Math.floor(Math.random() * 15): dino);
+  const [dinoIcon] = useState(dino === undefined ? 1 + Math.floor(Math.random() * 15): dino);
 
   return (
     <div id={slugify(name)} className="flex bg-gray-900 pt-8">
