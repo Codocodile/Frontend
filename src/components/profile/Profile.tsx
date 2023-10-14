@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Section } from "../../containers";
 import axios from "axios";
 import { RefreshToken } from "../panel/Panel";
-import { useNavigate } from "react-router-dom";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 import { urls, API_URL } from "../../global/Variables";
 import {
   Checkbox,
@@ -16,45 +16,139 @@ import {
 import "./profile.css";
 import InputText from "./InputText";
 
+function loadChallenger(
+  navigate: NavigateFunction,
+  setData: React.Dispatch<any>,
+  is_crashed: boolean
+) {
+  axios
+    .get(API_URL + "/api/view-challenger/", {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("auth.access"),
+      },
+    })
+    .then((res) => {
+      setData(res.data);
+    })
+    .catch((err) => {
+      if (is_crashed) {
+        navigate(urls.signIn);
+        return;
+      }
+      if (err.response.status === 401) {
+        if (!RefreshToken()) {
+          navigate(urls.signIn);
+          return;
+        }
+        loadChallenger(navigate, setData, true);
+      }
+    });
+}
+
+function confirmChallenger(
+  navigate: NavigateFunction,
+  setVerification: React.Dispatch<boolean>,
+  is_crashed: boolean
+) {
+  axios
+    .get(API_URL + "/api/confirm-challenger/", {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("auth.access"),
+      },
+    })
+    .then(() => {
+      setVerification(true);
+    })
+    .catch((err) => {
+      if (is_crashed) {
+        navigate(urls.signIn);
+        return;
+      }
+      if (err.response.status === 401) {
+        if (!RefreshToken()) {
+          navigate(urls.signIn);
+          return;
+        }
+        confirmChallenger(navigate, setVerification, true);
+      }
+    });
+}
+
+function verifyCode(
+  navigate: NavigateFunction,
+  data: any,
+  setVerification: React.Dispatch<boolean>,
+  is_crashed: boolean
+) {
+  axios
+    .post(
+      API_URL + "/api/confirm-challenger/",
+      { confirmation_code: data.confirmation_code },
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("auth.access"),
+        },
+      }
+    )
+    .then(() => {
+      setVerification(false);
+      data.is_confirmed = true;
+    })
+    .catch((err) => {
+      if (is_crashed) {
+        navigate(urls.signIn);
+        return;
+      }
+      if (err.response.status === 401) {
+        if (!RefreshToken()) {
+          navigate(urls.signIn);
+          return;
+        }
+        verifyCode(navigate, data, setVerification, true);
+      }
+    });
+}
+
+function updateChallenger(
+  navigate: NavigateFunction,
+  data: any,
+  setAlertSuccess: React.Dispatch<boolean>,
+  is_crashed: boolean
+) {
+  axios
+    .put(API_URL + "/api/update-challenger/", data, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("auth.access"),
+      },
+    })
+    .then(() => {
+      setAlertSuccess(true);
+      setTimeout(() => {
+        setAlertSuccess(false);
+      }, 3000);
+    })
+    .catch((err) => {
+      if (is_crashed) {
+        navigate(urls.signIn);
+        return;
+      }
+      if (err.response.status === 401) {
+        if (!RefreshToken()) {
+          navigate(urls.signIn);
+          return;
+        }
+        updateChallenger(navigate, data, setAlertSuccess, true);
+      }
+    });
+}
+
 const Profile = () => {
   const [alertSuccess, setAlertSuccess] = useState(false);
   const [data, setData] = useState({} as any);
   const [verification, setVerification] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios
-      .get(API_URL + "/api/view-challenger/", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("auth.access"),
-        },
-      })
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => {
-        if (err.response.status === 401) {
-          if (!RefreshToken()) {
-            navigate(urls.signIn);
-          } else {
-            axios
-              .get(API_URL + "/api/view-challenger/", {
-                headers: {
-                  Authorization:
-                    "Bearer " + localStorage.getItem("auth.access"),
-                },
-              })
-              .then((res) => {
-                setData(res.data);
-              })
-              .catch((err) => {
-                console.log(err);
-                navigate(urls.signIn);
-              });
-          }
-        }
-      });
-  }, []);
+  useEffect(() => loadChallenger(navigate, setData, false), []);
   return (
     <>
       <Section name="Profile" side="left">
@@ -109,42 +203,7 @@ const Profile = () => {
             className={
               "text-white h-11 " + (data?.is_confirmed ? "hidden" : "block")
             }
-            onClick={() => {
-              axios
-                .get(API_URL + "/api/confirm-challenger/", {
-                  headers: {
-                    Authorization:
-                      "Bearer " + localStorage.getItem("auth.access"),
-                  },
-                })
-                .then((res) => {
-                  setVerification(true);
-                  console.log(res);
-                })
-                .catch((err) => {
-                  if (err.response.status === 401) {
-                    if (!RefreshToken()) {
-                      navigate(urls.signIn);
-                    } else {
-                      axios
-                        .get(API_URL + "/api/confirm-challenger/", {
-                          headers: {
-                            Authorization:
-                              "Bearer " + localStorage.getItem("auth.access"),
-                          },
-                        })
-                        .then((res) => {
-                          setVerification(true);
-                          console.log(res);
-                        })
-                        .catch((err) => {
-                          console.log(err);
-                          navigate(urls.signIn);
-                        });
-                    }
-                  }
-                });
-            }}
+            onClick={() => confirmChallenger(navigate, setVerification, false)}
           >
             Verify
           </Button>
@@ -171,52 +230,7 @@ const Profile = () => {
             color="light-blue"
             size="md"
             className={"text-white h-11"}
-            onClick={() => {
-              axios
-                .post(
-                  API_URL + "/api/confirm-challenger/",
-                  { confirmation_code: data.confirmation_code },
-                  {
-                    headers: {
-                      Authorization:
-                        "Bearer " + localStorage.getItem("auth.access"),
-                    },
-                  }
-                )
-                .then((res) => {
-                  setVerification(false);
-                  data.is_confirmed = true;
-                  console.log(res);
-                })
-                .catch((err) => {
-                  if (err.response.status === 401) {
-                    if (!RefreshToken()) {
-                      navigate(urls.signIn);
-                    } else {
-                      axios
-                        .post(
-                          API_URL + "/api/confirm-challenger/",
-                          { confirmation_code: data.confirmation_code },
-                          {
-                            headers: {
-                              Authorization:
-                                "Bearer " + localStorage.getItem("auth.access"),
-                            },
-                          }
-                        )
-                        .then((res) => {
-                          setVerification(false);
-                          data.is_confirmed = true;
-                          console.log(res);
-                        })
-                        .catch((err) => {
-                          console.log(err);
-                          navigate(urls.signIn);
-                        });
-                    }
-                  }
-                });
-            }}
+            onClick={() => verifyCode(navigate, data, setVerification, false)}
           >
             Check
           </Button>
@@ -288,6 +302,7 @@ const Profile = () => {
             setData({ ...data, is_workshop_attender: e.target.checked });
           }}
           crossOrigin=""
+          className="text-white"
         />
         <Input
           type="submit"
@@ -298,45 +313,7 @@ const Profile = () => {
           crossOrigin=""
           onClick={(e) => {
             e.preventDefault();
-            axios
-              .put(API_URL + "/api/update-challenger/", data, {
-                headers: {
-                  Authorization:
-                    "Bearer " + localStorage.getItem("auth.access"),
-                },
-              })
-              .then(() => {
-                setAlertSuccess(true);
-                setTimeout(() => {
-                  setAlertSuccess(false);
-                }, 3000);
-              })
-              .catch((err) => {
-                if (err.response.status === 401) {
-                  if (!RefreshToken()) {
-                    navigate(urls.signIn);
-                  } else {
-                    axios
-                      .patch(API_URL + "/api/update-challenger/", data, {
-                        headers: {
-                          Authorization:
-                            "Bearer " + localStorage.getItem("auth.access"),
-                        },
-                      })
-                      .then(() => {
-                        setAlertSuccess(true);
-                        setTimeout(() => {
-                          setAlertSuccess(false);
-                        }, 3000);
-                      })
-                      .catch((err) => {
-                        console.log(err);
-                        navigate(urls.signIn);
-                      });
-                  }
-                }
-                console.log(err);
-              });
+            updateChallenger(navigate, data, setAlertSuccess, false);
           }}
         />
         <Alert color="green" className="text-white" open={alertSuccess}>

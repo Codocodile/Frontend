@@ -52,7 +52,7 @@ const PanelNavbar = () => {
       <div className="flex items-center justify-between text-blue-gray-900">
         <div className="flex items-center gap-4">
           <div className="mr-4 py-1.5">
-            <Link to={urls.profile}>
+            <Link to={urls.landing}>
               <img
                 src={header_logo}
                 alt="header_logo"
