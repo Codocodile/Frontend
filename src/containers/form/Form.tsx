@@ -7,10 +7,8 @@ import axios from "axios";
 import { Alert, Typography } from "@material-tailwind/react";
 import { useState } from "react";
 import { useNavigate, NavigateFunction } from "react-router-dom";
-import { urls } from "../../global/Variables.ts";
+import { urls, API_URL } from "../../global/Variables.ts";
 import { HashLink } from "react-router-hash-link";
-
-const API_URL = "https://codocodile.com/api";
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
@@ -53,13 +51,13 @@ function signUp(
     .then((res) => {
       if (res.status === 201 || res.status === 200) {
         setSuccessAlert(true);
-        delay(5000).then(() => {
+        delay(3000).then(() => {
           navigate(urls.landing);
         });
       } else {
         setFailureResponse("Something went wrong!");
         setFailureAlert(true);
-        delay(5000).then(() => {
+        delay(3000).then(() => {
           setFailureAlert(false);
         });
       }
@@ -76,7 +74,7 @@ function signUp(
         setFailureResponse("Something went wrong!");
       }
       setFailureAlert(true);
-      delay(5000).then(() => {
+      delay(3000).then(() => {
         setFailureAlert(false);
       });
     });
@@ -104,13 +102,13 @@ function signIn(
         setSuccessAlert(true);
         localStorage.setItem("auth.access", res.data.access)
         localStorage.setItem("auth.refresh", res.data.refresh)
-        delay(5000).then(() => {
-          navigate(urls.landing);
+        delay(3000).then(() => {
+          navigate(urls.profile);
         });
       } else {
         setFailureResponse("Something went wrong!");
         setFailureAlert(true);
-        delay(5000).then(() => {
+        delay(3000).then(() => {
           setFailureAlert(false);
         });
       }
@@ -127,7 +125,7 @@ function signIn(
         setFailureResponse("Something went wrong!");
       }
       setFailureAlert(true);
-      delay(5000).then(() => {
+      delay(3000).then(() => {
         setFailureAlert(false);
       });
     });

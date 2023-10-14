@@ -7,12 +7,11 @@ import {
   Collapse,
   // Avatar,
 } from "@material-tailwind/react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { urls } from "../../global/Variables.ts";
-import { HashLink } from "react-router-hash-link";
-import header_logo from '/assets/Header_logo.png';
+import header_logo from "/assets/Header_logo.png";
 
-const Navbar = () => {
+const PanelNavbar = () => {
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
 
@@ -31,9 +30,7 @@ const Navbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <HashLink to="#introduction" smooth={true}>
-          <a className="flex items-center">Introduction</a>
-        </HashLink>
+        <Link to="profile">Profile</Link>
       </Typography>
       <Typography
         as="li"
@@ -41,32 +38,7 @@ const Navbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <HashLink to="#timeline" smooth={true}>
-          <a className="flex items-center">Timeline</a>
-        </HashLink>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <HashLink
-          to="#imperfect-minds-(software-engineering-workshop)"
-          smooth={true}
-        >
-          <a className="flex items-center">Imperfect Minds</a>
-        </HashLink>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <HashLink to="#faq" smooth={true}>
-          <a className="flex items-center">FAQ</a>
-        </HashLink>
+        <Link to="team">Team</Link>
       </Typography>
     </ul>
   );
@@ -79,36 +51,30 @@ const Navbar = () => {
     >
       <div className="flex items-center justify-between text-blue-gray-900">
         <div className="flex items-center gap-4">
-          <Typography
-            as="a"
-            href="#"
-            className="mr-4 cursor-pointer py-1.5 font-large font-bold"
-          >
-            <img
-              src={header_logo}
-              alt="header_logo"
-              width={200}
-              height={200}
-            />
-          </Typography>
+          <div className="mr-4 py-1.5">
+            <Link to={urls.profile}>
+              <img
+                src={header_logo}
+                alt="header_logo"
+                width={200}
+                height={200}
+              />
+            </Link>
+          </div>
         </div>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
           <Button
-            variant="outlined"
-            size="sm"
-            className="hidden lg:inline-block"
-            onClick={() => navigate(urls.signIn)}
-          >
-            <span>Sign In</span>
-          </Button>
-          <Button
             variant="gradient"
             size="sm"
             className="hidden lg:inline-block"
-            onClick={() => navigate(urls.signUp)}
+            onClick={() => {
+              localStorage.removeItem("auth.access");
+              localStorage.removeItem("auth.refresh");
+              navigate(urls.signIn);
+            }}
           >
-            <span>Sign Up</span>
+            <span>Sign Out</span>
           </Button>
           <IconButton
             variant="text"
@@ -152,26 +118,21 @@ const Navbar = () => {
       <Collapse open={openNav}>
         {navList}
         <Button
-          variant="outlined"
-          size="sm"
-          fullWidth
-          className="mb-2"
-          onClick={() => navigate(urls.signIn)}
-        >
-          <span>Sign In</span>
-        </Button>
-        <Button
           variant="gradient"
           size="sm"
           fullWidth
           className="mb-2"
-          onClick={() => navigate(urls.signUp)}
+          onClick={() => {
+            localStorage.removeItem("auth.access");
+            localStorage.removeItem("auth.refresh");
+            navigate(urls.signIn);
+          }}
         >
-          <span>Sign Up</span>
+          <span>Sign Out</span>
         </Button>
       </Collapse>
     </NavbarComponent>
   );
 };
 
-export default Navbar;
+export default PanelNavbar;
