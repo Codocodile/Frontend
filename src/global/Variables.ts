@@ -7,5 +7,5 @@ export const urls = {
   team: '/panel/team',
 }
 
-// export const API_URL = 'https://codocodile.com/api'
-export const API_URL = 'http://localhost:8000'
+export const API_URL = 'https://codocodile.com/api'
+// export const API_URL = 'http://localhost:8000'
