@@ -306,7 +306,7 @@ const Profile = () => {
         />
         <Input
           type="submit"
-          value="Submit"
+          value="Update"
           color="light-blue"
           size="lg"
           className="text-white"

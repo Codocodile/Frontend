@@ -13,15 +13,12 @@ const RefreshToken = () => {
       .then((res) => {
         localStorage.setItem("auth.access", res.data.access);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         localStorage.removeItem("auth.refresh");
-        return false;
       });
-  } else {
-    return false;
+    return localStorage.getItem("auth.access") !== null;
   }
-  return true;
+  return false;
 };
 
 const Panel = () => {
