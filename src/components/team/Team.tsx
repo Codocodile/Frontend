@@ -326,7 +326,14 @@ const Team = () => {
       ) : (
         <>
           <Section name="Invitations" side="left">
-            <Alert open={failureMessage != ""} color="red">
+            <Alert
+              open={
+                failureMessage != "" ||
+                challenger.national_code == "" ||
+                !challenger.is_confirmed
+              }
+              color="red"
+            >
               <span className="text-sm">
                 {challenger.national_code == "" &&
                   "Please complete your profile"}

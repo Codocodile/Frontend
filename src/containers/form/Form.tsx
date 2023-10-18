@@ -328,6 +328,7 @@ function Form({
               placeholder={"09123456789"}
               id={"sign-in-phone"}
               type={"text"}
+              pattern="[0-9]{11}"
             />
           )}
           {(headerText === "Sign Up" ||
@@ -339,6 +340,7 @@ function Form({
               placeholder={"example@gmail.com"}
               id={"sign-in-email"}
               type={"email"}
+              pattern="[\w-\.]+@([\w-]+\.)+[\w-]{2,4}"
             />
           )}
           {headerText != "Forget Password" && (
