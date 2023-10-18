@@ -113,6 +113,7 @@ function updateChallenger(
   navigate: NavigateFunction,
   data: any,
   setAlertSuccess: React.Dispatch<boolean>,
+  setFailureMessage: React.Dispatch<string>,
   is_crashed: boolean
 ) {
   axios
@@ -137,13 +138,22 @@ function updateChallenger(
           navigate(urls.signIn);
           return;
         }
-        updateChallenger(navigate, data, setAlertSuccess, true);
+        updateChallenger(
+          navigate,
+          data,
+          setAlertSuccess,
+          setFailureMessage,
+          true
+        );
+      } else {
+        setFailureMessage(err.response.data.detail);
       }
     });
 }
 
 const Profile = () => {
   const [alertSuccess, setAlertSuccess] = useState(false);
+  const [failureMessage, setFailureMessage] = useState("");
   const [data, setData] = useState({} as any);
   const [verification, setVerification] = useState(false);
   const navigate = useNavigate();
@@ -313,11 +323,20 @@ const Profile = () => {
           crossOrigin=""
           onClick={(e) => {
             e.preventDefault();
-            updateChallenger(navigate, data, setAlertSuccess, false);
+            updateChallenger(
+              navigate,
+              data,
+              setAlertSuccess,
+              setFailureMessage,
+              false
+            );
           }}
         />
         <Alert color="green" className="text-white" open={alertSuccess}>
           Your profile is updated successfully!
+        </Alert>
+        <Alert color="red" className="text-white" open={failureMessage != ""}>
+          {failureMessage}
         </Alert>
       </Section>
     </>
