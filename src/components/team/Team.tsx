@@ -336,16 +336,16 @@ const Team = () => {
               color="red"
             >
               {challenger.national_code == "" && (
-                <span className="text-sm">
-                  Please complete your profile&nbsp;
-                </span>
+                <p className="text-md">
+                Please complete your profile
+                </p>
               )}
               {!challenger.is_confirmed && (
-                <span className="text-sm">
-                  Please confirm your email&nbsp;
-                </span>
+                <p className="text-md">
+                Please confirm your email
+                </p>
               )}
-              <span className="text-sm">{failureMessage}</span>
+              <p className="text-sm">{failureMessage}</p>
             </Alert>
             {challenger.national_code != "" && challenger.is_confirmed && (
               <Invitations

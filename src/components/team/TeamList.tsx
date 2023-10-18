@@ -97,6 +97,7 @@ function createTeam(
 function inviteMember(
   setTeam: React.Dispatch<any>,
   navigate: NavigateFunction,
+  setSearchFailureMessage: React.Dispatch<React.SetStateAction<string>>,
   is_crashed: boolean,
   id: number
 ) {
@@ -125,7 +126,12 @@ function inviteMember(
           navigate(urls.signIn);
           return;
         }
-        inviteMember(setTeam, navigate, true, id);
+        inviteMember(setTeam, navigate,setSearchFailureMessage, true, id);
+      } else {
+        setSearchFailureMessage(err.response.data.errors[0].detail);
+        setTimeout(() => {
+          setSearchFailureMessage("");
+        }, 3000);
       }
     });
 }
@@ -187,10 +193,10 @@ const TeamList = ({
                           false
                         );
                         setTimeout(() => {
-                          inviteMember(setTeam!, navigate, false, user.id);
+                          inviteMember(setTeam!, navigate, setSearchFailureMessage!, false, user.id);
                         }, 3000);
                       } else {
-                        inviteMember(setTeam!, navigate, false, user.id);
+                        inviteMember(setTeam!, navigate, setSearchFailureMessage!, false, user.id);
                       }
                     }}
                   >
