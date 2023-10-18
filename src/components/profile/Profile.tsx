@@ -146,7 +146,10 @@ function updateChallenger(
           true
         );
       } else {
-        setFailureMessage(err.response.data.detail);
+        setFailureMessage(err.response.data.errors[0].detail);
+        setTimeout(() => {
+          setFailureMessage("");
+        }, 3000);
       }
     });
 }

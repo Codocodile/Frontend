@@ -86,7 +86,10 @@ function createTeam(
         }
         createTeam(setTeam, navigate, setSearchFailureMessage, true);
       } else {
-        setSearchFailureMessage(err.response.data.detail);
+        setSearchFailureMessage(err.response.data.errors[0].detail);
+        setTimeout(() => {
+          setSearchFailureMessage("");
+        }, 3000);
       }
     });
 }
