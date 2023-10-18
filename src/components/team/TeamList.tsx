@@ -52,11 +52,13 @@ interface Props {
   team?: ChallengerTeam;
   setTeam?: React.Dispatch<any>;
   type: "members" | "challengers";
+  setSearchFailureMessage?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 function createTeam(
   setTeam: React.Dispatch<any>,
   navigate: NavigateFunction,
+  setSearchFailureMessage: React.Dispatch<React.SetStateAction<string>>,
   is_crashed: boolean
 ) {
   axios
@@ -82,7 +84,9 @@ function createTeam(
           navigate(urls.signIn);
           return;
         }
-        createTeam(setTeam, navigate, true);
+        createTeam(setTeam, navigate, setSearchFailureMessage, true);
+      } else {
+        setSearchFailureMessage(err.response.data.detail);
       }
     });
 }
@@ -123,7 +127,13 @@ function inviteMember(
     });
 }
 
-const TeamList = ({ users, team, setTeam, type }: Props) => {
+const TeamList = ({
+  users,
+  team,
+  setTeam,
+  type,
+  setSearchFailureMessage,
+}: Props) => {
   const navigate = useNavigate();
 
   return (
@@ -167,7 +177,12 @@ const TeamList = ({ users, team, setTeam, type }: Props) => {
                     color="blue-gray"
                     onClick={() => {
                       if (team?.members.length == 0) {
-                        createTeam(setTeam!, navigate, false);
+                        createTeam(
+                          setTeam!,
+                          navigate,
+                          setSearchFailureMessage!,
+                          false
+                        );
                         setTimeout(() => {
                           inviteMember(setTeam!, navigate, false, user.id);
                         }, 3000);

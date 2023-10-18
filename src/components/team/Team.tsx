@@ -240,6 +240,7 @@ const Team = () => {
   const [name, setName] = useState("");
   const [users, setUsers] = useState([]);
   const [failureMessage, setFailureMessage] = useState("");
+  const [searchFailureMessage, setSearchFailureMessage] = useState("");
   const [totalPages, setTotalPages] = useState(1);
   const [division, setDivision] = useState("");
   const [challenger, setChallenger] = useState<Challenger>({
@@ -357,6 +358,9 @@ const Team = () => {
       )}
       {team.members.length < 2 && (
         <Section name="Challengers" side="right">
+          <Alert open={searchFailureMessage != ""} color="red">
+            {searchFailureMessage}
+          </Alert>
           {challenger.national_code != "" && challenger.is_confirmed && (
             <>
               <Input
@@ -382,6 +386,7 @@ const Team = () => {
                 users={users}
                 team={team}
                 setTeam={setTeam}
+                setSearchFailureMessage={setSearchFailureMessage}
                 type="challengers"
               />
               <TeamPagination
