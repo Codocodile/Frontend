@@ -306,12 +306,21 @@ const Team = () => {
               (division == "S" && "Senior") ||
               (division == "P" && "Professional")}
           </Typography>
-          <Typography variant="h1" className="text-white">
+          <Typography variant="h3" className="text-white">
             Judge Username: {"team-" + String(team.id).padStart(3, "0")}
           </Typography>
-          <Typography variant="h1" className="text-white">
-          Judge Password: {team.judge_password}
+          <Typography variant="h3" className="text-white">
+            Judge Password: {team.judge_password}
           </Typography>
+          <Button
+            color="light-blue"
+            onClick={() => {
+              let url = "https://judge.codocodile.com/login";
+              window.open(url, "_blank");
+            }}
+          >
+            Particiapte in Contest
+          </Button>
           <TeamList
             users={team.members.map((m) => m.challenger)}
             type="members"
