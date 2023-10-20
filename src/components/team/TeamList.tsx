@@ -37,8 +37,10 @@ export interface Member {
 }
 
 export interface ChallengerTeam {
+  id: number;
   name: string;
   description: string;
+  judge_password: string;
   members: Member[];
 }
 

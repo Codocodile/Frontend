@@ -180,8 +180,10 @@ function deleteTeam(
     })
     .then(() => {
       setTeam({
+        id: 0,
         name: "",
         description: "",
+        judge_password: "",
         members: [],
       });
     })
@@ -232,8 +234,10 @@ function loadChallenger(
 const Team = () => {
   const navigate = useNavigate();
   const [team, setTeam] = useState<ChallengerTeam>({
+    id: 0,
     name: "",
     description: "",
+    judge_password: "",
     members: [],
   });
   const [invitations, setInvitations] = useState<Invitation[]>([]);
@@ -302,6 +306,12 @@ const Team = () => {
               (division == "S" && "Senior") ||
               (division == "P" && "Professional")}
           </Typography>
+          <Typography variant="h1" className="text-white">
+            Judge Username: {"team-" + String(team.id).padStart(3, "0")}
+          </Typography>
+          <Typography variant="h1" className="text-white">
+          Judge Password: {team.judge_password}
+          </Typography>
           <TeamList
             users={team.members.map((m) => m.challenger)}
             type="members"
@@ -336,14 +346,10 @@ const Team = () => {
               color="red"
             >
               {challenger.national_code == "" && (
-                <p className="text-md">
-                Please complete your profile
-                </p>
+                <p className="text-md">Please complete your profile</p>
               )}
               {!challenger.is_confirmed && (
-                <p className="text-md">
-                Please confirm your email
-                </p>
+                <p className="text-md">Please confirm your email</p>
               )}
               <p className="text-sm">{failureMessage}</p>
             </Alert>
