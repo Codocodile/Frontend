@@ -5,7 +5,7 @@ import {
   Button,
   Input,
   Textarea,
-  Typography,
+  // Typography,
 } from "@material-tailwind/react";
 import { API_URL, urls } from "../../global/Variables";
 import React, { useEffect, useState } from "react";
@@ -246,7 +246,7 @@ const Team = () => {
   const [failureMessage, setFailureMessage] = useState("");
   const [searchFailureMessage, setSearchFailureMessage] = useState("");
   const [totalPages, setTotalPages] = useState(1);
-  const [division, setDivision] = useState("");
+  // const [division, setDivision] = useState("");
   const [challenger, setChallenger] = useState<Challenger>({
     id: 0,
     first_name_persian: "",
@@ -276,7 +276,7 @@ const Team = () => {
         max_division = member.challenger.status;
       }
     }
-    setDivision(max_division);
+    // setDivision(max_division);
   }, [team]);
 
   return (
@@ -300,7 +300,7 @@ const Team = () => {
               setTeam({ ...team, description: e.target.value });
             }}
           />
-          <Typography variant="h2" className="text-white">
+          {/* <Typography variant="h2" className="text-white">
             Division:{" "}
             {(division == "J" && "Junior") ||
               (division == "S" && "Senior") ||
@@ -320,7 +320,7 @@ const Team = () => {
             }}
           >
             Particiapte in Contest
-          </Button>
+          </Button> */}
           <TeamList
             users={team.members.map((m) => m.challenger)}
             type="members"
