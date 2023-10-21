@@ -374,7 +374,7 @@ const Team = () => {
           </Section>
         </>
       )}
-      {team.members.length < 2 && (
+      {team.members.length < 4 && (
         <Section name="Challengers" side="right">
           <Alert open={searchFailureMessage != ""} color="red">
             {searchFailureMessage}
