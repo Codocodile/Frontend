@@ -8,6 +8,7 @@ import Profile from "./components/profile/Profile.tsx";
 import Team from "./components/team/Team.tsx";
 import PasswordReset from "./components/password-reset/PasswordReset.tsx";
 import ForgetPassword from "./components/password-reset/ForgetPassword.tsx";
+import SignUp from "./components/signUp/SignUp.tsx";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Routes>
         <Route index element={<Landing />} />
         <Route path={urls.signIn} element={<SignIn />} />
-        {/* <Route path={urls.signUp} element={<SignUp />} /> */}
+        <Route path={urls.signUp} element={<SignUp />} />
         <Route path={urls.passwordReset} element={<PasswordReset />} />
         <Route path={urls.forgetPassword} element={<ForgetPassword />} />
         <Route path={urls.panel} element={<Panel />}>

@@ -102,14 +102,14 @@ const Navbar = () => {
           >
             <span>Sign In</span>
           </Button>
-          {/* <Button
+          <Button
             variant="gradient"
             size="sm"
             className="hidden lg:inline-block"
             onClick={() => navigate(urls.signUp)}
           >
             <span>Sign Up</span>
-          </Button> */}
+          </Button>
           <IconButton
             variant="text"
             className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -160,7 +160,7 @@ const Navbar = () => {
         >
           <span>Sign In</span>
         </Button>
-        {/* <Button
+        <Button
           variant="gradient"
           size="sm"
           fullWidth
@@ -168,7 +168,7 @@ const Navbar = () => {
           onClick={() => navigate(urls.signUp)}
         >
           <span>Sign Up</span>
-        </Button> */}
+        </Button>
       </Collapse>
     </NavbarComponent>
   );
