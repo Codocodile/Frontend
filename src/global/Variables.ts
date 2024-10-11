@@ -7,8 +7,6 @@ export const urls = {
     panel: '/panel',
     profile: '/panel/profile',
     team: '/panel/team',
-    wildCard: "*"
 }
-
-// export const API_URL = 'https://codocodile.com/api'
-export const API_URL = 'http://localhost:8000'
+export const API_URL = 'https://codocodile.com'
+// export const API_URL = 'http://localhost:8000'

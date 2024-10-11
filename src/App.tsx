@@ -1,7 +1,7 @@
 import "./App.css";
 import Landing from "./components/landing/Landing.tsx";
 import Panel from "./components/panel/Panel.tsx";
-import {Route, Routes, Navigate} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import SignIn from "./components/signIn/SignIn.tsx";
 import {urls} from "./global/Variables.ts";
 import Profile from "./components/profile/Profile.tsx";
@@ -9,8 +9,11 @@ import Team from "./components/team/Team.tsx";
 import PasswordReset from "./components/password-reset/PasswordReset.tsx";
 import ForgetPassword from "./components/password-reset/ForgetPassword.tsx";
 import SignUp from "./components/signUp/SignUp.tsx";
+import Visit from "./components/visit/visit.tsx";
+import {useLocation} from "react-router-dom";
 
 function App() {
+    const location = useLocation()
     return (
         <div className="App">
             <Routes>
@@ -23,7 +26,7 @@ function App() {
                     <Route path="profile" element={<Profile/>}/>
                     <Route path="team" element={<Team/>}/>
                 </Route>
-                <Route path={urls.wildCard} element={<Navigate to={"/"}/>}/>
+                <Route path={"*"} element={<Visit pathName={location.pathname}/>}/>
             </Routes>
         </div>
     );
