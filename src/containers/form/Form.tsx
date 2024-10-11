@@ -347,7 +347,7 @@ function Form({
             <FullWidthInput
               label={"Password"}
               name="password"
-              placeholder={"******************"}
+              placeholder={"************"}
               id={"sign-in-password"}
               type={"password"}
             />
