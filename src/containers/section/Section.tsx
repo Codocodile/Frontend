@@ -9,6 +9,7 @@ interface Props {
     side?: "left" | "right";
     dino?: number;
     image?: string;
+    nameColor?: string
 }
 
 function titleCase(str: string) {
@@ -25,7 +26,7 @@ function slugify(str: string) {
     return str.toLowerCase().split(" ").join("-");
 }
 
-const Section = ({name, capitalize, children, side, dino, image}: Props) => {
+const Section = ({name, nameColor, capitalize, children, side, dino, image}: Props) => {
     const [dinoIcon] = useState(dino === undefined ? 1 + Math.floor(Math.random() * 15) : dino);
 
     return (
@@ -43,7 +44,7 @@ const Section = ({name, capitalize, children, side, dino, image}: Props) => {
                     <Typography
                         variant="h1"
                         color="white"
-                        className="text-white mb-6 mt-6 section-title"
+                        className={nameColor !== undefined ? `text-[${nameColor}] mb-6 mt-6 section-title` : "text-white mb-6 mt-6 section-title"}
                     >
                         {capitalize ? name.toUpperCase() : titleCase(name)}
                     </Typography>

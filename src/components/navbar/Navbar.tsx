@@ -92,7 +92,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-4">
                     <Typography
                         as="a"
-                        href="#"
+                        href="/"
                         className="mr-4 cursor-pointer py-1.5 font-large font-bold"
                     >
                         <img
