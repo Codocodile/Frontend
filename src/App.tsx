@@ -11,6 +11,7 @@ import ForgetPassword from "./components/password-reset/ForgetPassword.tsx";
 import SignUp from "./components/signUp/SignUp.tsx";
 import Visit from "./components/visit/visit.tsx";
 import {useLocation} from "react-router-dom";
+import Sponsor from "./components/sponsor/Sponsor.tsx";
 
 function App() {
     const location = useLocation()
@@ -21,12 +22,13 @@ function App() {
                 <Route path={urls.signIn} element={<SignIn/>}/>
                 <Route path={urls.signUp} element={<SignUp/>}/>
                 <Route path={urls.passwordReset} element={<PasswordReset/>}/>
+                <Route path={urls.sponsor} element={<Sponsor/>}/>
                 <Route path={urls.forgetPassword} element={<ForgetPassword/>}/>
                 <Route path={urls.panel} element={<Panel/>}>
                     <Route path="profile" element={<Profile/>}/>
                     <Route path="team" element={<Team/>}/>
                 </Route>
-                <Route path={"*"} element={<Visit pathName={location.pathname}/>}/>
+                <Route path={"*"} element={<Visit pathName={location.pathname}/>} />
             </Routes>
         </div>
     );
