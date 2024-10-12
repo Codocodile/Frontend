@@ -25,59 +25,32 @@ const Navbar = () => {
 
     const navList = (
         <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal font-black"
-            >
+            <Typography as="li" variant="small" color="blue-gray" className="p-1 font-black">
                 <HashLink to="/sponsor" smooth={true}>
                     <a className="flex items-center">Our Sponsor</a>
                 </HashLink>
             </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <HashLink to="#introduction" smooth={true}>
+            <Typography as="li" variant="small" color="blue-gray" className="p-1 font-normal ">
+                <HashLink to="/#staff" smooth={true}>
+                    <a className="flex items-center">Staff</a>
+                </HashLink>
+            </Typography>
+            <Typography as="li" variant="small" color="blue-gray" className="p-1 font-normal ">
+                <HashLink to="/#introduction" smooth={true}>
                     <a className="flex items-center">Introduction</a>
                 </HashLink>
             </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <HashLink to="#timeline" smooth={true}>
+            <Typography as="li" variant="small" color="blue-gray" className="p-1 font-normal ">
+                <HashLink to="/#timeline" smooth={true}>
                     <a className="flex items-center">Timeline</a>
                 </HashLink>
             </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <HashLink
-                    to="#imperfect-minds-(software-engineering-workshop)"
-                    smooth={true}
-                >
-                    <a className="flex items-center">Imperfect Minds</a>
-                </HashLink>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <HashLink to="#faq" smooth={true}>
+            <Typography as="li" variant="small" color="blue-gray" className="p-1 font-normal">
+                <HashLink to="/#faq" smooth={true}>
                     <a className="flex items-center">FAQ</a>
                 </HashLink>
             </Typography>
+
 
         </ul>
     );
