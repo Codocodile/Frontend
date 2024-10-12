@@ -7,7 +7,7 @@ import axios from "axios";
 import { Alert, Typography } from "@material-tailwind/react";
 import { useState } from "react";
 import { useNavigate, NavigateFunction } from "react-router-dom";
-import { urls, API_URL } from "../../global/Variables.ts";
+import { urls, API_URL } from "../../global-constants/Variables.ts";
 import { HashLink } from "react-router-hash-link";
 import { NavLink } from "react-router-dom";
 

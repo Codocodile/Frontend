@@ -3,7 +3,7 @@ import Landing from "./components/landing/Landing.tsx";
 import Panel from "./components/panel/Panel.tsx";
 import {Route, Routes} from "react-router-dom";
 import SignIn from "./components/signIn/SignIn.tsx";
-import {urls} from "./global/Variables.ts";
+import {urls} from "./global-constants/Variables.ts";
 import Profile from "./components/profile/Profile.tsx";
 import Team from "./components/team/Team.tsx";
 import PasswordReset from "./components/password-reset/PasswordReset.tsx";

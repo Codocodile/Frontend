@@ -1,5 +1,5 @@
 import {Navigate} from "react-router-dom";
-import {urls} from "../../global/Variables.ts";
+import {urls} from "../../global-constants/Variables.ts";
 import React from "react";
 import {visitUrl} from "./visitUrl.ts";
 

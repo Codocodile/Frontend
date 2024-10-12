@@ -1,5 +1,5 @@
 import axios from "axios";
-import {API_URL} from "../../global/Variables.ts";
+import {API_URL} from "../../global-constants/Variables.ts";
 
 interface IVisitURL {
     url: string

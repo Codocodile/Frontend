@@ -1,13 +1,9 @@
 import { Carousel } from "@material-tailwind/react";
+import {IStaff} from "../../global-constants/Staff.ts"
 
-interface Staff {
-  name: string;
-  title: string;
-  image: string;
-}
 
 interface Props {
-  staff: Staff[];
+  staff: IStaff[];
 }
 
 const StaffCarousel = ({ staff }: Props) => {

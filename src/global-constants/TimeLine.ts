@@ -1,4 +1,4 @@
-export const timeline = [
+export const TIMELINE_DATA = [
     {
         date: "22 Mehr",
         title: "Registeration Starts.",

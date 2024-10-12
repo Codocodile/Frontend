@@ -8,7 +8,7 @@ import {
     // Avatar,
 } from "@material-tailwind/react";
 import {useNavigate} from "react-router-dom";
-import {urls} from "../../global/Variables.ts";
+import {urls} from "../../global-constants/Variables.ts";
 import {HashLink} from "react-router-hash-link";
 import header_logo from '/assets/Header_logo.png';
 
