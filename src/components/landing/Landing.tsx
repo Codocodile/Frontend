@@ -1,7 +1,7 @@
 import {Footer, Header, Section, TextOnlySection} from "../../containers";
 import {Navbar, EventTimeline, FAQ, StaffCarousel} from "../";
 import {staff} from "../../global-constants/Staff.ts";
-import {INTRODUCTION, SPONSOR_INTRODUCTION} from "../../global-constants/LandingConstants.ts";
+import {CURRENT_YEAR, INTRODUCTION, SPONSOR_INTRODUCTION} from "../../global-constants/LandingConstants.ts";
 import {TIMELINE_DATA} from "../../global-constants/TimeLine.ts";
 import {FAQ_DATA} from "../../global-constants/FAQ-Data.ts";
 
@@ -46,7 +46,7 @@ function Landing() {
             <Section name="FAQ" capitalize={true} side="right" dino={crocs[3]}>
                 <FAQ data={FAQ_DATA}/>
             </Section>
-            <Footer year={"2024"}/>
+            <Footer year={CURRENT_YEAR}/>
         </>
     );
 }

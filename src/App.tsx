@@ -28,7 +28,7 @@ function App() {
                     <Route path="profile" element={<Profile/>}/>
                     <Route path="team" element={<Team/>}/>
                 </Route>
-                <Route path={"*"} element={<Visit pathName={location.pathname}/>} />
+                <Route path={"*"} element={<Visit pathName={location.pathname}/>}/>
             </Routes>
         </div>
     );
