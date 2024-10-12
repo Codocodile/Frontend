@@ -9,5 +9,4 @@ export const urls = {
     team: '/panel/team',
     sponsor: '/sponsor',
 }
-// export const API_URL = 'https://codocodile.com'
-export const API_URL = 'http://localhost:8000'
+export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
