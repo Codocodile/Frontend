@@ -3,23 +3,52 @@
 @tailwind utilities;
 
 body {
-  scroll-behavior: smooth;
-  font-family: 'IBM Plex Mono', monospace;
-  font-family: 'Rubik', sans-serif;
+    background: #111827;
+    scroll-behavior: smooth;
+    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Rubik', sans-serif;
 }
 
 @font-face {
-  font-family: "Vazir";
-  src: url("/assets/Vazir.ttf") format("ttf"),
-       url("/assets/Vazir.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "Vazir";
+    src: url("/assets/fonts/Vazir.ttf") format('truetype'),
+    url("/assets/fonts/Vazir.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
 }
 
+@font-face {
+    font-family: "Dana-Thin";
+    src: url("/assets/fonts/Dana-Thin.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "Dana-Regular";
+    src: url("/assets/fonts/Dana-Regular.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "Dana-Bold";
+    src: url("/assets/fonts/Dana-Bold.ttf") format('truetype');
+}
+
+.font-dana-regular {
+    font-family: 'Dana-Regular', sans-serif;
+}
+
+.font-dana-thin {
+    font-family: 'Dana-Thin', sans-serif;
+}
+
+.font-dana-bold {
+    font-family: 'Dana-Bold', sans-serif;
+}
+
+
 .font-sans {
-  font-family: 'Rubik', sans-serif;
+    font-family: 'Rubik', sans-serif;
 }
 
 .rtl-grid {
-  direction: rtl;
+    direction: rtl;
 }
